@@ -6,6 +6,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
 import { CheckCircle2, Calendar, FileText, Rocket } from 'lucide-react';
 import { toast } from 'sonner';
+import axios from 'axios';
 
 export const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -24,12 +25,17 @@ export const ContactSection = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
+    try {
+      const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000';
+      
+      await axios.post(`${backendUrl}/api/status`, {
+        client_name: `${formData.name} - ${formData.email} - ${formData.phone || 'N/A'} - ${formData.practice || 'N/A'} - ${formData.caseVolume || 'N/A'} - ${formData.message || 'N/A'}`
+      });
+
       toast.success('Thank you! We\'ll be in touch within 24 hours.');
       setFormData({
         name: '',
@@ -39,8 +45,12 @@ export const ContactSection = () => {
         caseVolume: '',
         message: '',
       });
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      toast.error('Something went wrong. Please try again or email us directly.');
+    } finally {
       setIsSubmitting(false);
-    }, 1000);
+    }
   };
 
   const nextSteps = [
