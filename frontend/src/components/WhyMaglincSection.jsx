@@ -15,9 +15,9 @@ export const WhyMaglincSection = () => {
     {
       icon: Award,
       title: 'Quality',
-      feature: 'Our detailed, VA-compliant evaluations.',
+      feature: 'Our detailed evaluations.',
       benefit: 'Ensure fair assessments, reducing examiner fatigue and errors.',
-      stats: ['VA Compliant', 'Detail-Oriented', 'Error-Free'],
+      stats: ['Detail-Oriented', 'Error-Free'],
     },
     {
       icon: Target,

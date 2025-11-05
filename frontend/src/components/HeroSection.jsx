@@ -47,7 +47,7 @@ export const HeroSection = () => {
               {[
                 'Pre-screening & Record Review',
                 'DBQ Completion in 24-36 Hours',
-                'Medical Opinions & VA Addenda',
+                'Medical Opinions & VA Addendum',
                 'Stress-Free Deadline Management',
               ].map((benefit) => (
                 <div key={benefit} className="flex items-start space-x-3">
@@ -86,10 +86,6 @@ export const HeroSection = () => {
               <div>
                 <div className="text-3xl font-bold text-primary">24-36h</div>
                 <div className="text-sm text-muted-foreground">Turnaround Time</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-primary">100%</div>
-                <div className="text-sm text-muted-foreground">VA Compliant</div>
               </div>
             </div>
           </div>
